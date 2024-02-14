@@ -1,0 +1,60 @@
+<h1>Welcome to Reactive form</h1>
+
+<form [formGroup] = 'form'>
+    <div class="form-group">
+        <div>
+            <label for="gsearch">Search Google:</label>
+  <input type="search" id="gsearch" name="gsearch">
+        </div>
+        <label>FullNAME :</label>
+       
+     <input type="text"  class="form-control" name="fullname" placeholder="Fullname" formControlName="fullname">
+   
+     <div *ngIf="fullname.errors?.['required']">
+            <div class="alert alert-danger"
+                *ngIf="fullname.touched && fullname.invalid">enter fullname</div>
+            </div>
+                <div *ngIf="fullname.errors?.['minlength']">
+                <div class="alert alert-danger"
+                    *ngIf="fullname.touched && fullname.invalid"> enter valid characters</div>
+                </div>
+                <br>
+ 
+ 
+ 
+        <label>EMAIL :</label>
+        <input type="text"  class="form-control" name="email" placeholder="email" formControlName="email">
+        <div class="alert alert-danger"
+        *ngIf="email.touched && email.invalid ">enter valid email id</div>
+ 
+        <label>ADDRESS :</label>
+        <input type="text"  class="form-control" name="address" placeholder="address" formControlName="address">
+ 
+        <div class="alert alert-danger"
+        *ngIf="address.touched && address.invalid ">enter full Address</div>
+        <label for="cars">Select City:</label>
+<div>
+<select name="City" id="cty" placeholder="city">
+  <option value="volvo">Hyderabd</option>
+  <option value="saab">Tirupati</option>
+  <option value="mercedes">Mumbai</option>
+  <option value="audi">Kakinada</option>
+</select>
+</div>
+   <br>
+<div>
+<label for="birthday">Date:</label>
+<input type="date" id="birthday" name="birthday">
+</div>
+<div>
+<label for="myfile">Select a file:</label>
+  <input type="file" id="myfile" name="myfile">
+</div>
+<div>
+    <label for="vol">Volume (between 0 and 50):</label>
+    <input type="range" id="vol" name="vol" min="0" max="50">
+</div>
+    </div>
+    <input type="submit" class="btn btn-danger" [disabled]="form.invalid" value="Submit" >
+</form>
+ 

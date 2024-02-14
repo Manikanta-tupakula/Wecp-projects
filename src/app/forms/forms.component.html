@@ -1,0 +1,53 @@
+<h1>Welcome to Template Driven Form</h1>
+<div class="container mt-5">
+    <div class="form-area">
+     
+    <form #f ='ngForm' (submit)="onsubmit(f)">
+        <div class="form-group">
+        <label>FullName </label>
+        <input type="text" class="form-control" id="fname" name="Fullname"
+        ngModel #Fullname='ngModel'
+        (change)="getValue(Fullname)"
+        [ngClass] = "{ 'is-invalid' : Fullname.invalid }"
+        required
+        minlength="5"
+        maxlength="10" >
+            <div *ngIf="Fullname.errors?.['required']">
+            <div class="alert alert-danger"
+                *ngIf="Fullname.touched && Fullname.invalid">enter fullname</div>
+            </div>
+                <div *ngIf="Fullname.errors?.['minlength']">
+                <div class="alert alert-danger"
+                    *ngIf="Fullname.touched && Fullname.invalid"> fullname not meeting valid</div>
+                </div>
+        <br>
+        <label>Email </label>
+        <input type="email" pattern="[^ @]*@[^ @]*" class="form-control" id="email" name="Email"
+        ngModel #Email='ngModel'
+        (change)="getValue(Email)"
+        required
+        >
+        <div class="alert alert-danger"
+                *ngIf="Email.touched && Email.invalid">enter email</div>
+        <br>
+       
+        <label>Address </label>
+        <textarea rows="5" cols="10" type="text" class="form-control" id="Feedback" name="Address"
+        ngModel #Address='ngModel'
+        (change)="getValue(Address)"
+        required></textarea>
+        <div class="alert alert-danger"
+                *ngIf="Address.touched && Address.invalid">enter Address</div><br>
+       
+    </div>
+    
+    <div>
+    <input type="checkbox"><br>
+    <label>  I agree.</label>
+     
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="f.invalid">submit</button>
+    </form>
+     
+    </div>
+    </div>

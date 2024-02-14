@@ -1,0 +1,7 @@
+<p>movie</p>
+<div *ngFor="let item of movie;let i=index">
+    <p>{{item | json}}</p>
+    <button [routerLink]="['/reactx',i]">View content</button>
+    <!-- <li>{{item|json}}</li> -->
+</div>
+
